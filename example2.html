@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWD Part#2</title>
+
+    <style>
+        /*  
+        Starting with the global rules first
+        then moving to media queries and starting with small screen first
+        */
+
+        /* Global Styles for any device or any screen size */
+        * {
+            margin: 0;
+            padding: 0;
+            /* 
+            CSS3 box-sizing 
+            the border and the padding will be included within the width
+            */
+            box-sizing: border-box;
+        }
+
+        header,
+        footer,
+        section,
+        article,
+        main,
+        aside,
+        nav,
+        figure,
+        figcaption {
+            display: block;
+        }
+
+        div.wrapper {
+            /* specify the width and centre it  */
+            background-color: #D3D1D1;
+            /* With RWD: max-width with pixel or width with % */
+            max-width: 1500px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            border-top: 5px solid #B38C06;
+            border-bottom: 5px solid #B38C06;
+        }
+
+        main {
+            /* 
+            This property to fix the issue with the floating 
+            maybe we need this rule to work with 2 media queries:
+            - For medium screen => Example: Tablet with hight resolutions like (iPad Pro)
+            - For large screen => Example: Desktop-laptop (Large screens)
+            
+            So instead of writing this rule two times inside each 2 media blocks
+            we can just add it to our global CSS rules
+            */
+            overflow: hidden;
+        }
+
+
+        /*
+        Again, we can put the float left to be "global" rule 
+        because we want to apply the same rules for 2 media queries:
+        - For medium screen => Example: Tablet with hight resolutions like (iPad Pro)
+        - For large screen => Example: Desktop-laptop (Large screens)
+
+        similar to MDN website:
+        */
+        main section,
+        main aside {
+            float: left;
+            padding: 7px;
+        }
+
+        /* 
+the two aside elements plus the main element total has to be 100%
+*/
+        main section {
+            background-color: #D1C0A6;
+            width: 60%;
+        }
+
+        main aside {
+            background-color: #C3C7AB;
+            width: 20%;
+        }
+
+
+        footer {
+            background: chocolate;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* 
+        Link https://getbootstrap.com/docs/5.0/layout/breakpoints/
+        */
+        /* We are done with the global styles above */
+        /* For mobile (Small Screen) */
+        @media screen and (max-width: 576px) {
+
+            /*	for testing */
+            header {
+                background-color: brown;
+            }
+
+            /*
+            Here we need to change the layout:
+            - aside (by itself)
+            - main (by itself)
+            - aside (by itself)
+
+            Remember that all of these elements have the property: float: left;
+            in the Global Rules
+
+            In small screens (link in mobile devices), we need to disable the float: left! for all of these element
+            to have return to their default behaviour as block-level element
+            */
+            main section,
+            main aside {
+                /* We want to disable their floating property: */
+                float: none;
+                /* Now we just need to set the width to be 100% => like default */
+                width: 100%;
+            }
+        }
+
+        /* For tablet (Medium Screen) we can set the minimum by 1px above the previous media maximum */
+        @media screen and (min-width:577px) and (max-width: 768px) {
+
+            /*	for testing no changes needed! */
+            header {
+                background-color: orange;
+            }
+        }
+
+        /* For desktop/laptop (Normal Screen)  we can set the minimum by 1px above the previous media maximum */
+        @media screen and (min-width: 769px) {
+
+            /*	for testing no changes needed! */
+            header {
+                background-color: lightblue;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h2>Green<span class="highlight">Start</span></h2>
+            <p>GreenStart Awareness In Action Always And All The Time</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="example1.html">Home</a></li>
+                <li><a href="#">Green events</a></li>
+                <li><a href="#">Green Travel</a></li>
+                <li><a href="#">Green Tips</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <aside class="sidebar1">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ab sapiente placeat quae sunt iste
+                    nemo,
+                    corporis, hic tempore ad enim? Itaque iure architecto libero alias aliquam nisi, dolores rerum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta voluptates adipisci eum ipsam
+                    aspernatur,
+                    laborum culpa. Laudantium, aspernatur blanditiis a in quo. Ratione nam dolor suscipit totam
+                    veritatis
+                    ex. Et?</p>
+            </aside>
+
+            <section id="content">
+                <h1>Welcome to GreenSTart1</h1>
+                <article>
+                    <h2>Our Green Events</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A incidunt accusamus nam, excepturi,
+                        temporibus minus exercitationem veniam culpa pariatur. Repellendus dolorum facilis rem debitis
+                        ad.
+                        Eveniet maiores facere odio architecto.
+                    </p>
+                    <img src="images/RWD-Mockup1.jpg" alt="Current Page Mockup">
+                </article>
+                <article>
+                    <h2>Travel with GreenStart</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A incidunt accusamus nam, excepturi,
+                        temporibus minus exercitationem veniam culpa pariatur. Repellendus dolorum facilis rem debitis
+                        ad.
+                        Eveniet maiores facere odio architecto.</p>
+                </article>
+            </section>
+
+            <aside class="sidebar2">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ab sapiente placeat quae sunt iste
+                    nemo,
+                    corporis, hic tempore ad enim? Itaque iure architecto libero alias aliquam nisi, dolores rerum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta voluptates adipisci eum ipsam
+                    aspernatur,
+                    laborum culpa. Laudantium, aspernatur blanditiis a in quo. Ratione nam dolor suscipit totam
+                    veritatis
+                    ex. Et?</p>
+            </aside>
+
+            <!-- 
+                One of the solution for fixing the floating issue 
+            -->
+            <!-- <div style="clear:both"></div> -->
+        </main>
+        <footer> &copy; 2022 GreenStart. All rights reserved. RWD Part 2</footer>
+    </div>
+</body>
+
+</html>
